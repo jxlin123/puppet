@@ -1,12 +1,12 @@
 class ocf::packages::cups {
 
   # install cups
-  package { [ 'cups', 'cups-bsd', 'cups-tea4cups' ]: }
+  package { [ 'cups', 'cups-bsd' ]: }
 
   file {
     # set print server destination
     '/etc/cups/client.conf':
-      content => "ServerName localhost\nEncryption Always\n",
+      content => "ServerName printhost\nEncryption Always\n",
       require => Package[ 'cups', 'cups-bsd' ];
     # set default printer double
     '/etc/cups/lpoptions':
